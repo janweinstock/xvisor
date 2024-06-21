@@ -24,11 +24,11 @@
 ARCH_CPPFLAGS=$(board_cppflags) -DFIRMWARE_BOOT
 ARCH_CPPFLAGS+=-DTEXT_START=$(board_text_start)
 ifeq ($(board_32bit),y)
-ARCH_CFLAGS=$(board_cflags) -fno-omit-frame-pointer -fno-optimize-sibling-calls -mno-save-restore -mstrict-align -mabi=ilp32 -march=rv32imafdc -mcmodel=medany
-ARCH_ASFLAGS=$(board_asflags) -fno-omit-frame-pointer -fno-optimize-sibling-calls -mno-save-restore -mstrict-align -mabi=ilp32 -march=rv32imafdc -mcmodel=medany
+ARCH_CFLAGS=$(board_cflags) -fno-PIE -fno-omit-frame-pointer -fno-optimize-sibling-calls -mno-save-restore -mstrict-align -mabi=ilp32 -march=rv32imafdc -mcmodel=medany
+ARCH_ASFLAGS=$(board_asflags) -fno-PIE -fno-omit-frame-pointer -fno-optimize-sibling-calls -mno-save-restore -mstrict-align -mabi=ilp32 -march=rv32imafdc -mcmodel=medany
 else
-ARCH_CFLAGS=$(board_cflags) -fno-omit-frame-pointer -fno-optimize-sibling-calls -mno-save-restore -mstrict-align -mabi=lp64 -march=rv64imafdc -mcmodel=medany
-ARCH_ASFLAGS=$(board_asflags) -fno-omit-frame-pointer -fno-optimize-sibling-calls -mno-save-restore -mstrict-align -mabi=lp64 -march=rv64imafdc -mcmodel=medany
+ARCH_CFLAGS=$(board_cflags) -fno-PIE -fno-omit-frame-pointer -fno-optimize-sibling-calls -mno-save-restore -mstrict-align -mabi=lp64 -march=rv64imafdc -mcmodel=medany
+ARCH_ASFLAGS=$(board_asflags) -fno-PIE -fno-omit-frame-pointer -fno-optimize-sibling-calls -mno-save-restore -mstrict-align -mabi=lp64 -march=rv64imafdc -mcmodel=medany
 endif
 ARCH_LDSCRIPT=$(obj_dir)/firmware.lnk
 ARCH_LDFLAGS=$(board_ldflags)
